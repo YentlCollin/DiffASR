@@ -1,0 +1,4 @@
+extends: base.yaml
+experiment_name: lora_uniform_no_t_shifted
+diffusion:
+  denoiser_output_alignment: previous_position

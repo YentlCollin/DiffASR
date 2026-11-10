@@ -1,0 +1,124 @@
+experiment_name: conditional_diffasr_lora
+refinement_profile: false
+
+# Every scientific variant starts from the same untouched AR revision.  A
+# training resume may restore one of this run's own checkpoints; weights-only
+# DiffASR continuation is deliberately not used by the campaign launcher.
+model:
+  checkpoint: /path/to/authorized-base-model
+  revision: user-provided-revision
+  mode: diffusion
+  preserve_ar_forward: true
+  freeze_audio_tower: true
+  freeze_audio_projector: true
+  llm_train_strategy: lora
+  lora_rank: 128
+  lora_alpha: 256
+  lora_dropout: 0.0
+  lora_module_prefix: model.language_model
+  lora_target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+  # The full.yaml override enables the complete text decoder and lm_head.
+  train_lm_head: false
+  # All three experiments use uniform noise, so the dedicated MASK input has
+  # no semantic path and stays frozen consistently across the comparison.
+  train_mask_embedding: false
+
+data:
+  loader: conditional_local_tar
+  # Paths are relative to the repository root, not this YAML file.
+  local_root: data/legal-ytb
+  conditional_metadata_index: data/conditional/metadata-index.json
+  dataset_revision: user-provided-dataset-revision
+  stream_tar_archives: true
+  extract_tar_archives: false
+  exclude_eval_video_groups: true
+  seed: 3407
+  view_seed: 3463
+  shuffle_buffer_size: 32
+  parquet_batch_size: 65536
+  num_workers: 4
+  target_sample_rate: 16000
+  validate_sidecar_hashes: true
+  validate_tar_files: true
+  balance_distributed_shards: true
+  max_audio_bytes: 67108864
+
+diffusion:
+  noise_type: uniform
+  use_time_conditioning: false
+  denoiser_output_alignment: same_position
+  noise_schedule: linear
+  min_diffusion_time: 1.0e-3
+  full_noise_probability: 0.10
+  mask_token_text: reserved_special_token_14
+  mask_token_id: 250064
+  uniform_vocab_scope: safe_vocab
+  canvas_sizes: [64, 128, 256, 384, 512]
+  duration_tokens_per_second: 9.0
+  duration_margin_tokens: 100.0
+  tail_fill_mode: eos_repeat
+  turn_end_token_id: 250019
+  pad_token_id: 1
+  eos_tail_loss_weight: 1.0
+  pad_loss_weight: 0.1
+  diffusion_objective: auto
+  loss_positions: auto
+  loss_weighting: auto
+  added_token_output_policy: forbid_all_except
+  allowed_added_output_token_ids: [250019]
+  extra_forbidden_output_token_ids: [0, 1, 250062, 250064]
+  use_self_conditioning: false
+  use_iterative_self_correction: false
+  isct_num_stages: 2
+  isct_loss_weight: 1.0
+  isct_start_update: null
+  isct_prediction_mode: argmax
+  isct_stop_gradient: true
+
+sampling:
+  sampler: confidence_schedule
+  max_nfe: 64
+  prediction_mode: argmax
+  temperature_start: 0.8
+  temperature_end: 0.4
+  adaptive_stopping: false
+  entropy_budget_gamma: 0.05
+  position_bias_lambda: 0.2
+
+training:
+  seed: 3433
+  time_seed: 3411
+  corruption_seed: 3413
+  uniform_prior_seed: 3419
+  sampler_seed: 3421
+  dataloader_seed: 3427
+  time_embedding_seed: 3441
+  # Example budget only: recalculate epoch quotas after rebuilding metadata.
+  max_updates: 58838
+  per_device_batch_size: 1
+  gradient_accumulation_steps: 1
+  global_batch_size: 128
+  supported_world_sizes: [1, 2, 4, 8, 16, 32, 64, 128]
+  max_grad_norm: 1.0
+  learning_rate: 3.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.0
+  attention_implementation: sdpa
+  # Conservative memory default. Benchmark before increasing microbatch size.
+  gradient_checkpointing: true
+  distributed_strategy: ddp
+  mixed_precision: bf16
+  log_every_updates: 10
+  save_every_updates: 1000
+  save_total_limit: 2
+  scheduler_type: cosine
+  scheduler_warmup_updates: 625
+  scheduler_min_lr_ratio: 0.1
+  scheduler_horizon_updates: 58838

@@ -1,0 +1,4 @@
+extends: base.yaml
+experiment_name: lora_uniform_with_t_same
+diffusion:
+  use_time_conditioning: true

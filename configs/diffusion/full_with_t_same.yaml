@@ -1,0 +1,4 @@
+extends: full.yaml
+experiment_name: full_uniform_with_t_same
+diffusion:
+  use_time_conditioning: true

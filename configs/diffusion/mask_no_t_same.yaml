@@ -1,0 +1,7 @@
+extends: base.yaml
+experiment_name: lora_mask_no_t_same
+model:
+  train_mask_embedding: true
+diffusion:
+  noise_type: mask
+  full_noise_probability: 0.0
