@@ -11,11 +11,15 @@
     },
     {
       "path": "README.md",
-      "sha256": "7d0834aa7a45f904a291392d421f62c3d23dd5be55aeeefee1bad0c15b9db91c"
+      "sha256": "7d3d3e0a2abb0a373a8cec76aeb4ef390bf4428126018e93c1ffbb3dddbf30b2"
     },
     {
       "path": "_mawjais_diffusion_repository/__init__.py",
       "sha256": "df4cd83ca9a75884eb140368925d865c078c1be4ae8bf703dd9507d452e0c4b0"
+    },
+    {
+      "path": "added_files.md",
+      "sha256": "8e9f28e16eef7189b472b78e16994e21355b40224c9c17e95ca27ebeb8771776"
     },
     {
       "path": "audio/diffusion/__init__.py",
@@ -228,6 +232,10 @@
     {
       "path": "audio/tests/test_xllm_diffusion_attention_mode.py",
       "sha256": "128e3da7524fea5a7ea3d51d5559ee51fca1bf8c35d14862d77991c740434964"
+    },
+    {
+      "path": "change_code.md",
+      "sha256": "d7950100147c0ab1b1d3e10f03611ad89e148ab6303f5b521bcbc9fbe4182e9d"
     },
     {
       "path": "configs/diffusion/base.yaml",

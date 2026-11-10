@@ -34,6 +34,12 @@ No new redistribution license for third-party model code is granted here.
 - `configs/diffusion/`: example ablations; replace placeholder paths and revisions.
 - `audio/tests/`: CPU tests, including toy models that exercise the diffusion wrapper.
 
+For a guided code review, start with:
+
+- [Files added for diffusion](added_files.md): module inventory and responsibilities.
+- [Changes to the AR model](change_code.md): function-level integration changes,
+  attention visibility and audio-freezing safeguards.
+
 ## Architecture
 
 The original audio tower and audio projector remain frozen. The text decoder
