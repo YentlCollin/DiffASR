@@ -46,7 +46,7 @@ it does not silently increase the bucket size.
 
 | Added file | What I put in it / what to review |
 |---|---|
-| [sampler.py](audio/diffusion/sampler.py) | Canvas-update algorithms, including Confidence, Argmax UDM, and marginalized UDM, plus the shared `sample_diffusion` entry point. The selected code's algorithms are preserved; publication does not introduce a new scientific method. |
+| [sampler.py](audio/diffusion/sampler.py) | Canvas-update algorithms, including Confidence, Argmax UDM, and marginalized UDM, plus the shared `sample_diffusion` entry point. |
 | [metrics.py](audio/diffusion/metrics.py) | Denoising measurements during training and aggregation through additive counters, producing consistent ratios across batches/ranks. |
 | [conditional_evaluation.py](audio/diffusion/conditional_evaluation.py) | Strict and diacritic-stripped WER/CER, breakdowns by instruction and content, country tags, paired comparisons, and timing. Note: the historical `der` measures distance between extracted sequences of marks, not a diacritic-to-letter alignment. |
 
@@ -77,7 +77,7 @@ compatible defaults when switching sampler families.
 | [training_resume.py](audio/diffusion/training_resume.py) | Resume checks: code and data identity, hashes, training state, RNG, and position within the data. |
 | [training_fork.py](audio/diffusion/training_fork.py) | The distinction between exactly resuming a run and continuing in a new run, with explicit policies for retaining or resetting states. |
 | [isct.py](audio/diffusion/isct.py) | Legacy iterative self-correction support for Mask, retained for imports and compatibility. It is disabled in every published configuration. Additional research branches are not included. |
-| [__init__.py](audio/diffusion/__init__.py) | Public package exports. Publication preparation notably adds the `sample_diffusion` export. |
+| [__init__.py](audio/diffusion/__init__.py) | Public package exports, including the `sample_diffusion` dispatcher. |
 
 ## 2. `audio/diffusion_data/`: preprocessing and data loading
 
@@ -208,8 +208,7 @@ are detailed in [docs/VALIDATION.md](docs/VALIDATION.md).
 
 ## 7. Documentation, dependencies, and publication verification
 
-These files are added to make the selection verifiable and usable; they are
-not new network components.
+These files document the implementation, dependencies and source integrity.
 
 | Added file | Role |
 |---|---|

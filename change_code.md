@@ -10,8 +10,7 @@ diffusion, data, and launch modules are described separately in
 **The changes described below were made in existing MawJais / Jais-ASR model
 files. Those files are not currently pushed to this public repository because
 I do not yet have authorization to redistribute their complete implementation.**
-Their absence from the public tree does not mean that the changes were not
-implemented. This document explains my integration work function by function,
+This document explains my integration work function by function,
 with excerpts of my additions and illustrative examples. The complete upstream
 files, their full patch, encoder-specific internals and model weights remain
 omitted pending authorization.

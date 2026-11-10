@@ -19,7 +19,7 @@
     },
     {
       "path": "added_files.md",
-      "sha256": "8e9f28e16eef7189b472b78e16994e21355b40224c9c17e95ca27ebeb8771776"
+      "sha256": "3b6fad074f78a4cb6c69373a5093abeb6024ecd7fd59a1eecf98de9f7b078caf"
     },
     {
       "path": "audio/diffusion/__init__.py",
@@ -235,7 +235,7 @@
     },
     {
       "path": "change_code.md",
-      "sha256": "c23e709c67c30b0b8307aea2a6b322076813bdff8f783c217f2583de41208a1e"
+      "sha256": "646e13cb7b7998b8d4bb855f208f72cf92f3004f1b60906c54afeb95cf0c8e8a"
     },
     {
       "path": "configs/diffusion/base.yaml",
