@@ -38,7 +38,8 @@ For a guided code review, start with:
 
 - [Files added for diffusion](added_files.md): module inventory and responsibilities.
 - [Changes to the AR model](change_code.md): function-level integration changes,
-  attention visibility and audio-freezing safeguards.
+  attention visibility and audio-freezing safeguards, with excerpts of my additions.
+  The upstream files discussed there are withheld pending redistribution authorization.
 
 ## Architecture
 

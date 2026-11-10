@@ -11,7 +11,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "7d3d3e0a2abb0a373a8cec76aeb4ef390bf4428126018e93c1ffbb3dddbf30b2"
+      "sha256": "669f2c5201e0d0ca6d46f2e692128ac13649031c0e47ce00a67056316ef08771"
     },
     {
       "path": "_mawjais_diffusion_repository/__init__.py",
@@ -235,7 +235,7 @@
     },
     {
       "path": "change_code.md",
-      "sha256": "d7950100147c0ab1b1d3e10f03611ad89e148ab6303f5b521bcbc9fbe4182e9d"
+      "sha256": "c23e709c67c30b0b8307aea2a6b322076813bdff8f783c217f2583de41208a1e"
     },
     {
       "path": "configs/diffusion/base.yaml",
